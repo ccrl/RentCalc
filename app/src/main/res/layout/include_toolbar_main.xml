@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="eh"
+            type="com.sample.projects.myrentcalculator.eventhandler.MainEventHandler" />
+    </data>
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbarMain"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStart="@dimen/dimens_0_dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_red_400"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/mImageButtonHamburger"
+                style="@style/mBaseTheme.mImageButton.Toolbar"
+                android:layout_marginLeft="@dimen/dimens_16_dp"
+                android:layout_marginRight="@dimen/dimens_16_dp"
+                android:onClick="@{() -> eh.ehOnClickHamburgerButton()}"
+                android:src="@drawable/outline_menu_black_36"
+                android:tint="@android:color/white" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/mTVAppTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/label_placeholder"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+</layout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <group
+        android:id="@+id/group_a"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/mItemHome"
+            android:checked="true"
+            android:title="@string/label_home" />
+
+        <item
+            android:id="@+id/mItemManila"
+            android:checked="false"
+            android:icon="@drawable/outline_flash_on_black_24"
+            android:iconTint="@color/color_gray_800"
+            android:title="@string/label_manila" />
+
+        <item
+            android:id="@+id/mItemDipolog"
+            android:checked="false"
+            android:icon="@drawable/outline_opacity_black_24"
+            android:iconTint="@color/color_gray_800"
+            android:title="@string/label_dipolog" />
+
+    </group>
+
+</menu>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MyRentCalculator</string>
+
+    <string name="label_nav_select_category">Select Category</string>
+    <string name="label_placeholder">Placeholder</string>
+
+    <!--  BUTTONS  -->
+    <string name="label_button_cancel">Cancel</string>
+    <string name="label_button_unit_add">Add Unit</string>
+    <string name="label_button_unit_remove">Remove Unit</string>
+
+    <!--  LABELS  -->
+    <string name="label_home">Home</string>
+    <string name="label_manila">Manila</string>
+    <string name="label_dipolog">Dipolog</string>
+
+    <!--  TEXTVIEW  -->
+    <string name="label_unit_unit_name">Unit</string>
+    <string name="label_unit_rentee">Rentee</string>
+    <string name="label_unit_rent_fee">RentFee</string>
+    <string name="label_unit_location">Location: </string>
+
+    <!--    -->
+    <string name="label_type_trailer">There are no more items to be displayed.</string>
+</resources>

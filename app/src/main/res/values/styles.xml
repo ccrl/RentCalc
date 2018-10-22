@@ -12,9 +12,9 @@
 
     <!--  DIALOG  -->
 
-    <style name="mBaseTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert"/>
-    <style name="mBaseTheme.Dialog.AddUnit">
-    </style>
+    <style name="mBaseTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert" />
+
+    <style name="mBaseTheme.Dialog.AddUnit"></style>
 
     <!--  DIVIDER  -->
     <style name="mBaseTheme.Divider">
@@ -27,8 +27,8 @@
     <style name="mBaseTheme.mImageButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
     <style name="mBaseTheme.mImageButton.NavDrawer">
@@ -55,6 +55,10 @@
     </style>
 
     <style name="mBaseTheme.mTextView.Dialog.Value" />
+
+    <style name="mBaseTheme.mTextView.Labels">
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <!--  TOOLBAR  -->
     <style name="mBaseTheme.mImageButton.Toolbar">

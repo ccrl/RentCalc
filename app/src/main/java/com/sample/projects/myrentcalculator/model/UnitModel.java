@@ -8,6 +8,7 @@ public class UnitModel {
     public static final String COLUMN_RENTEE = "unit_rentee";
     public static final String COLUMN_RENT_FEE = "unit_rent_fee";
     public static final String COLUMN_LOCATION = "unit_location";
+    public static final String COLUMN_LOCATION_NAME = "unit_location_name";
 
     private static final String MANILA = "MANILA";
     private static final String DIPOLOG = "DIPOLOG";
@@ -15,7 +16,7 @@ public class UnitModel {
     private int unitId;
     private String unitName;
     private String rentee;
-    private String rentFee;
+    private double rentFee;
     private String rentOriginalFee;
     private String rentStartDate;
     private int location;
@@ -25,11 +26,12 @@ public class UnitModel {
 
     public UnitModel() {}
 
-    public UnitModel(int unitId, String unitName, String rentee, String rentFee) {
+    public UnitModel(int unitId, String unitName, String rentee, double rentFee, int location) {
         this.unitId = unitId;
         this.unitName = unitName;
         this.rentee = rentee;
         this.rentFee = rentFee;
+        this.location = location;
     }
 
     public static final String CREATE_TABLE =
@@ -37,8 +39,8 @@ public class UnitModel {
                     + COLUMN_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_NAME + " TEXT,"
                     + COLUMN_RENTEE + " TEXT,"
-                    + COLUMN_RENT_FEE + " TEXT,"
-                    + COLUMN_LOCATION + " TEXT"
+                    + COLUMN_RENT_FEE + " DOUBLE,"
+                    + COLUMN_LOCATION + " INTEGER"
                     + ")";
 
     public int getUnitId() {
@@ -65,11 +67,11 @@ public class UnitModel {
         this.rentee = rentee;
     }
 
-    public String getRentFee() {
+    public double getRentFee() {
         return rentFee;
     }
 
-    public void setRentFee(String rentFee) {
+    public void setRentFee(double rentFee) {
         this.rentFee = rentFee;
     }
 

@@ -1,4 +1,4 @@
-package com.sample.projects.myrentcalculator.main;
+package com.sample.projects.myrentcalculator.activities;
 
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;

@@ -37,13 +37,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long insertUnit(String unit, String rentee, String rentFee) {
+    public long insertUnit(String unit, String rentee, double rentFee, int location) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(UnitModel.COLUMN_NAME, unit);
         values.put(UnitModel.COLUMN_RENTEE, rentee);
         values.put(UnitModel.COLUMN_RENT_FEE, rentFee);
+        values.put(UnitModel.COLUMN_LOCATION, location);
 
         long id = db.insert(UnitModel.TABLE_NAME, null, values);
 
@@ -59,7 +60,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{UnitModel.COLUMN_ID,
                         UnitModel.COLUMN_NAME,
                         UnitModel.COLUMN_RENTEE,
-                        UnitModel.COLUMN_RENT_FEE},
+                        UnitModel.COLUMN_RENT_FEE,
+                        UnitModel.COLUMN_LOCATION},
                 UnitModel.COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -70,7 +72,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cursor.getInt(cursor.getColumnIndex(UnitModel.COLUMN_ID)),
                     cursor.getString(cursor.getColumnIndex(UnitModel.COLUMN_NAME)),
                     cursor.getString(cursor.getColumnIndex(UnitModel.COLUMN_ID)),
-                    cursor.getString(cursor.getColumnIndex(UnitModel.COLUMN_RENT_FEE)));
+                    cursor.getDouble(cursor.getColumnIndex(UnitModel.COLUMN_RENT_FEE)),
+                    cursor.getInt(cursor.getColumnIndex(UnitModel.COLUMN_LOCATION)));
             cursor.close();
         }
         return unitModel;
@@ -91,7 +94,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 unitModel.setUnitId(cursor.getInt(cursor.getColumnIndex(UnitModel.COLUMN_ID)));
                 unitModel.setUnitName(cursor.getString(cursor.getColumnIndex(UnitModel.COLUMN_NAME)));
                 unitModel.setRentee(cursor.getString(cursor.getColumnIndex(UnitModel.COLUMN_RENTEE)));
-                unitModel.setRentFee(cursor.getString(cursor.getColumnIndex(UnitModel.COLUMN_RENT_FEE)));
+                unitModel.setRentFee(cursor.getDouble(cursor.getColumnIndex(UnitModel.COLUMN_RENT_FEE)));
+                unitModel.setLocation(cursor.getInt(cursor.getColumnIndex(UnitModel.COLUMN_LOCATION)));
 
                 unitModelList.add(unitModel);
             } while (cursor.moveToNext());
@@ -118,6 +122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(UnitModel.COLUMN_NAME, unitModel.getUnitName());
         values.put(UnitModel.COLUMN_RENTEE, unitModel.getRentee());
         values.put(UnitModel.COLUMN_RENT_FEE, unitModel.getRentFee());
+        values.put(UnitModel.COLUMN_LOCATION, unitModel.getLocation());
 
         return db.update(UnitModel.TABLE_NAME, values, UnitModel.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(unitModel.getUnitId())});

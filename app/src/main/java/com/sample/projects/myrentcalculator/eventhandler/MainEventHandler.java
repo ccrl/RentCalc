@@ -1,13 +1,9 @@
 package com.sample.projects.myrentcalculator.eventhandler;
 
 import android.content.Context;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 
 import com.sample.projects.myrentcalculator.interfaces.MainInterface;
-import com.sample.projects.myrentcalculator.main.MainActivity;
+import com.sample.projects.myrentcalculator.activities.MainActivity;
 
 /**
  * Created by Chyron-MACBOOK on 10/5/18.

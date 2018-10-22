@@ -3,6 +3,7 @@ package com.sample.projects.myrentcalculator.adapters;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,12 +38,18 @@ public class MainUnitAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         UnitModel unitModel = unitModelList.get(position);
 
         ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
         itemViewHolder.getBinding().mTVUnitName.setText(unitModel.getUnitName());
-        itemViewHolder.getBinding().mTVRentFee.setText(unitModel.getRentFee());
+        itemViewHolder.getBinding().mTVRentFee.setText(String.valueOf(unitModel.getRentFee()));
+        itemViewHolder.getBinding().mLayoutRowContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("MAIN_UNIT_ADAPTER", "position: "+position);
+            }
+        });
     }
     //endregion
 

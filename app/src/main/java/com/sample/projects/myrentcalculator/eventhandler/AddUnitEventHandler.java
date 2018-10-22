@@ -2,8 +2,6 @@ package com.sample.projects.myrentcalculator.eventhandler;
 
 import android.content.Context;
 
-import com.sample.projects.myrentcalculator.databinding.LayoutDialogAddUnitBinding;
-
 /**
  * Created by Chyron-MACBOOK on 10/16/18.
  */
@@ -11,14 +9,8 @@ import com.sample.projects.myrentcalculator.databinding.LayoutDialogAddUnitBindi
 public class AddUnitEventHandler {
 
     private Context context;
-    private LayoutDialogAddUnitBinding binding;
 
-    public AddUnitEventHandler(Context context,
-                               LayoutDialogAddUnitBinding binding) {
+    public AddUnitEventHandler(Context context) {
         this.context = context;
-        this.binding = binding;
     }
-
-
-
 }

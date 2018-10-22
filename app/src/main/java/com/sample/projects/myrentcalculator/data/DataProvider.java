@@ -38,28 +38,28 @@ public class DataProvider {
         unitModel = new UnitModel();
         unitModel.setUnitName("Unit A Manila");
         unitModel.setRentee("temp rentee");
-        unitModel.setRentFee("2000");
+        unitModel.setRentFee(10000);
         unitModel.setLocation(0);
         unitModelList.add(unitModel);
 
         unitModel = new UnitModel();
         unitModel.setUnitName("Unit A Dipolog");
         unitModel.setRentee("temp rentee");
-        unitModel.setRentFee("3000");
+        unitModel.setRentFee(40230238);
         unitModel.setLocation(1);
         unitModelList.add(unitModel);
 
         unitModel = new UnitModel();
         unitModel.setUnitName("Unit B Dipolog");
         unitModel.setRentee("temp rentee");
-        unitModel.setRentFee("10000");
+        unitModel.setRentFee(2342351);
         unitModel.setLocation(1);
         unitModelList.add(unitModel);
 
         unitModel = new UnitModel();
         unitModel.setUnitName("Unit B Manila");
         unitModel.setRentee("temp rentee");
-        unitModel.setRentFee("90000");
+        unitModel.setRentFee(145145);
         unitModel.setLocation(0);
         unitModelList.add(unitModel);
 

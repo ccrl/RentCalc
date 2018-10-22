@@ -1,21 +1,10 @@
 package com.sample.projects.myrentcalculator.fragments;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.sample.projects.myrentcalculator.R;
 import com.sample.projects.myrentcalculator.adapters.MainUnitAdapter;
-import com.sample.projects.myrentcalculator.data.DataProvider;
-import com.sample.projects.myrentcalculator.databinding.FragmentUnitBinding;
-import com.sample.projects.myrentcalculator.eventhandler.FragmentsEventHandler;
+import com.sample.projects.myrentcalculator.data.DatabaseHelper;
 import com.sample.projects.myrentcalculator.model.UnitModel;
 
 import java.util.ArrayList;
@@ -25,20 +14,9 @@ import java.util.List;
  * Created by Chyron-MACBOOK on 10/9/18.
  */
 
-public class ManilaFragment extends Fragment {
+public class ManilaFragment extends BaseFragment {
 
-    //region VARIABLES
-    private FragmentUnitBinding binding;
-    private String pageTitle;
-    private DataProvider dataProvider;
-    private List<UnitModel> unitModelList;
-    private static int LOCATION = 0; // Manila
-    private int page;
-    //endregion
-
-    //region VIEW
-    private RecyclerView mRecyclerView;
-    //endregion
+    protected static int LOCATION = 0; // Manila
 
     //region SETUP
     public static ManilaFragment newInstance(String pageTitle,
@@ -49,47 +27,26 @@ public class ManilaFragment extends Fragment {
         return fragment;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, getLayoutResourceId(), container, false);
-        View view = binding.getRoot();
-
-        FragmentsEventHandler eh = new FragmentsEventHandler(getActivity());
-        binding.setEh(eh);
-
-        dataProvider = new DataProvider(getActivity());
-        unitModelList = new ArrayList<>();
-
-        setupViewBinding();
-        setupRecyclerViewAdapter();
-
-        return view;
-    }
-
-    private void setupViewBinding() {
-        mRecyclerView = binding.mRecyclerView;
-    }
-
     public void setupRecyclerViewAdapter() {
-        List<String> contentList = new ArrayList<>();
-        if (dataProvider != null) {
-            for (int i = 0; dataProvider.getUnitList().size() > i; i++) {
-                UnitModel unitModel = dataProvider.getUnitList().get(i);
-                if (unitModel.getLocation() == LOCATION) {
-                    unitModelList.add(unitModel);
-                }
-            }
-            MainUnitAdapter adapter = new MainUnitAdapter(unitModelList);
+        DatabaseHelper dbHelper = new DatabaseHelper(getActivity());
+        if (dbHelper.getAllUnits().size() > 0) {
+            MainUnitAdapter adapter = new MainUnitAdapter(dbHelper.getAllUnits());
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRecyclerView.setAdapter(adapter);
+        } else {
+            List<String> contentList = new ArrayList<>();
+            if (dataProvider != null) {
+                for (int i = 0; dataProvider.getUnitList().size() > i; i++) {
+                    UnitModel unitModel = dataProvider.getUnitList().get(i);
+                    if (unitModel.getLocation() == LOCATION) {
+                        unitModelList.add(unitModel);
+                    }
+                }
+                MainUnitAdapter adapter = new MainUnitAdapter(unitModelList);
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                mRecyclerView.setAdapter(adapter);
+            }
         }
-    }
-    //endregion
-
-    //region GETTERS AND SETTERS
-    private int getLayoutResourceId() {
-        return R.layout.fragment_unit;
     }
     //endregion
 }
